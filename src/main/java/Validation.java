@@ -42,4 +42,26 @@ public class Validation {
         String extension = domainPart.substring(dotIndex + 1);
         return extension.length() >= 2 && extension.chars().allMatch(Character::isLetter);
     }
+    public boolean isPasswordValid(String password) {
+
+        if(password == null || password.isEmpty()) return false;
+
+        if(password.length() < 6) return false;
+
+        if(!password.matches(".*[A-Z].*")) return false;
+
+        if(!password.matches(".*[a-z].*")) return false;
+
+        if(!password.matches(".*\\d.*")) return false;
+
+        if(!password.matches(".*[!@#$%^&*].*")) return false;
+
+        return true;
+    }
+    public boolean passwordsMatch(String p1, String p2){
+        return p1 != null && p1.equals(p2);
+    }
+    public boolean isDOBValid(String dob){
+        return dob != null && dob.matches("\\d{2}/\\d{2}/\\d{4}");
+    }
 }
